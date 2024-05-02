@@ -14,5 +14,5 @@ public interface IBbsDao {
 	public int write(@Param("bbs") Bbs bbs);
 	public List<Bbs> list();
 	public List<Bbs> sendList(@Param("id") String id);
-	public List<Bbs> receuveList(@Param("id") String id);
+	public List<Bbs> receiveList(@Param("id") String id);
 }

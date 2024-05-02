@@ -76,7 +76,9 @@ public class MyController {
 	// 글작성하기
 	@PostMapping("/write")
 	public String write(Bbs bbs, HttpServletResponse response, HttpServletRequest request) throws Exception{
-		
+		System.out.println(bbs.getId());
+		HttpSession session = request.getSession();
+		bbs.setId((String)session.getAttribute("id"));
 		response.setContentType("text/html; charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
 		

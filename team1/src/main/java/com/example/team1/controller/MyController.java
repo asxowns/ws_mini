@@ -212,5 +212,18 @@ public class MyController {
 
 		return "redirect:list";
 	}
+	
+	@GetMapping("/success1")
+	public String seccess() {
+		
+		return "success";
+	}
+	
+	
+	
+	
+	
+	
+	
 
 }

@@ -31,6 +31,7 @@ public class MyController {
 
 	@Autowired
 	HttpServletResponse response;
+
 	// 인덱스
 	@RequestMapping("/index")
 	public String root() {
@@ -70,7 +71,7 @@ public class MyController {
 	@GetMapping("/logout")
 	public String logout() {
 		HttpSession session = request.getSession();
-		
+
 		session.invalidate();
 
 		return "index";
@@ -90,7 +91,7 @@ public class MyController {
 
 	// 글작성하기
 	@PostMapping("/write")
-	public String write(Bbs bbs) throws Exception{
+	public String write(Bbs bbs) throws Exception {
 		System.out.println(bbs.getId());
 		HttpSession session = request.getSession();
 		bbs.setId((String) session.getAttribute("id"));
@@ -154,6 +155,28 @@ public class MyController {
 		model.addAttribute("dto", bbs);
 
 		return "detail";
+	}
+
+	// 디테일 send
+	@GetMapping("/detailSend")
+	public String detailSend(@RequestParam("bno") int bno, Model model) {
+
+		Bbs bbs = dao.detail(bno);
+
+		model.addAttribute("dto", bbs);
+
+		return "detailSend";
+	}
+
+	// 디테일 receive
+	@GetMapping("/detailReceive")
+	public String detailReceive(@RequestParam("bno") int bno, Model model) {
+
+		Bbs bbs = dao.detail(bno);
+
+		model.addAttribute("dto", bbs);
+
+		return "detailReceive";
 	}
 
 	// 삭제

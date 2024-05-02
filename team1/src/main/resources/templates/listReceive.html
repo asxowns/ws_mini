@@ -21,7 +21,7 @@
 	          <tr th:each="dto, status : ${list}">
 				<td> [[${dto.bno}]]</td>
 				<td> [[${dto.id}]]</td>
-				<td> <a th:href="@{detail(bno=${dto.bno})}"> [[${dto.title}]]</a></td>
+				<td> <a th:href="@{detail(bno=${dto.id})}"> [[${dto.title}]]</a></td>
 				<td> [[${dto.writer}]]</td>
 				<td> [[${dto.target}]]</td>
 			

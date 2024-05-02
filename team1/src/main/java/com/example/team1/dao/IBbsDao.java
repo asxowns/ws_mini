@@ -11,7 +11,7 @@ import com.example.team1.dto.Member;
 @Mapper
 public interface IBbsDao {
 
-	public int login(@Param("id") String id,@Param("pw") String pw);
+	public Member login(@Param("id") String id,@Param("pw") String pw);
 	public int regist(@Param("member") Member member);
 	public int write(@Param("bbs") Bbs bbs);
 	public List<Bbs> list();

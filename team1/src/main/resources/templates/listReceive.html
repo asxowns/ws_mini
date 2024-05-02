@@ -9,8 +9,26 @@
 
 <body>
 	<h1>list Recieve Page</h1>
-<h1></h1>
-</body>
+<table border="1">
+	   <thead>
+	       <td>번호</td>
+	       <td>아이디</td>
+	       <td>제목</td>
+	       <td>작성자</td>
+	       <td>작성대상</td>
+	   </thead>
+	   
+	          <tr th:each="dto, status : ${list}">
+				<td> [[${dto.bno}]]</td>
+				<td> [[${dto.id}]]</td>
+				<td> <a th:href="@{detail(bno=${dto.bno})}"> [[${dto.title}]]</a></td>
+				<td> [[${dto.writer}]]</td>
+				<td> [[${dto.target}]]</td>
+			
+	          </tr>
+	  </table>
+	  <a href="writeForm">글작성하기</a><br>
+
 </body>
 
 </html>

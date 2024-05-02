@@ -43,12 +43,14 @@ public class MyController {
 		}
 	}
 	
+	// 글작성 폼
 	@GetMapping("/writeForm")
 	public String writeForm() {
 		
 		return "writeForm";
 	}
 	
+	// 글작성하기
 	@PostMapping("/write")
 	public String write(Bbs bbs) {
 		
@@ -57,6 +59,7 @@ public class MyController {
 		return "redirect:list";
 	}
 	
+	//전체 리스트
 	@GetMapping("/list")
 	public String list(Model model) {
 		
@@ -65,6 +68,7 @@ public class MyController {
 		return "list";
 	}
 	
+	//보낸 리스트
 	@GetMapping("/sendList")
 	public String sendList(@RequestParam("id") String id, Model model) {
 		
@@ -73,6 +77,7 @@ public class MyController {
 		return "listSend";
 	}
 	
+	//받은 리스트
 	@GetMapping("/receiveList")
 	public String receiveList(@RequestParam("id") String id, Model model) {
 		
@@ -81,7 +86,22 @@ public class MyController {
 		return "listReceive";
 	}
 	
+	// 디테일 페이지
+	@GetMapping("/detail")
+	public String detail(@RequestParam("bno") int bno, Model model) {
+		
+		model.addAttribute("dto", dao.detail(bno));
+		
+		return "detail";
+	}
 	
+	// 삭제
+	public String delete(@RequestParam("bno") int bno) {
+		
+		dao.delete(bno);
+		
+		return "redirect:list";
+	}
 	
 	
 	

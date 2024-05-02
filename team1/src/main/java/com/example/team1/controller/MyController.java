@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.team1.dao.IBbsDao;
 import com.example.team1.dto.Bbs;
+import com.example.team1.dto.Member;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MyController {
@@ -32,11 +36,14 @@ public class MyController {
 	
 	// 로그인하기
 	@PostMapping("/login")
-	public String login(@RequestParam("id") String id, @RequestParam("pw") String pw) {
+	public String login(HttpServletRequest request, @RequestParam("id") String id, @RequestParam("pw") String pw) {
 		
-		dao.login(id, pw);
+		Member result = dao.login(id, pw);
 		
-		if(sessionScope.id != null) {
+		if(result != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("id", id);
+			session.setAttribute("pw", pw);
 			return "success";
 		}else {
 			return "loginForm";
@@ -90,12 +97,15 @@ public class MyController {
 	@GetMapping("/detail")
 	public String detail(@RequestParam("bno") int bno, Model model) {
 		
-		model.addAttribute("dto", dao.detail(bno));
+		Bbs bbs = dao.detail(bno);
+		
+		model.addAttribute("dto", bbs);
 		
 		return "detail";
 	}
 	
 	// 삭제
+	@GetMapping("/delete")
 	public String delete(@RequestParam("bno") int bno) {
 		
 		dao.delete(bno);

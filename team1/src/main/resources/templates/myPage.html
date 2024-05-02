@@ -9,8 +9,11 @@
 
 <body>
 	<h1>myPage</h1>
-<h1></h1>
-</body>
+
+<a th:href="@{sendList(id=${session.id})}"> 내가쓴 글</a>
+
+<a th:href="@{receiveList(id=${session.id})}"> 나한테 쓴 글 </a>
+
 </body>
 
 </html>

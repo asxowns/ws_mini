@@ -5,16 +5,97 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Insert title here</title>
+	
+	   <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 200px;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: inline-block;
+           
+            color: #fff;
+            text-decoration: none;
+            margin-top: 10px;
+            background-color: #007bff;
+            padding:10px 20px;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        div{
+        font-weight:bold;
+        font-size:20px;
+        text-align:center;
+        margin-bottom: 30px;
+        }
+        
+        main{
+        text-align: center;
+        }
+    </style>
 </head>
 
 <body>
 	<h1>success Page</h1>
 	
-	[[${session.id}]]님 환영합니다<br>
+	<div>[[${session.id}]]님 환영합니다</div>
+	<main>
 	<a href="myPage">마이페이지</a><br>
 	<a href= "list"> 목록보기</a><br>
 	<a href = "writeForm">글쓰기</a><br>
-	
+	<a href = "logout">로그아웃</a><br>
+	</main>
 	
 
 </body>

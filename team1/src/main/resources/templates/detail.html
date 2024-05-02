@@ -2,17 +2,123 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Insert title here</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	max-width: 600px;
+	margin: 50px auto;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+	text-align: center;
+	color: #333;
+}
+
+form {
+	text-align: center;
+}
+
+input[type="text"], input[type="password"] {
+	width: 200px;
+	padding: 10px;
+	margin: 10px 0;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+input[type="submit"] {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+	background-color: #0056b3;
+}
+
+
+a:hover {
+	text-decoration: underline;
+}
+
+div {
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+	margin-bottom: 30px;
+		width: 100%;
+}
+
+main {
+	text-align: center;
+}
+
+table, tr, th, td {
+	border-collapse: collapse;
+	border: solid 1px #000;
+	padding: 10px;
+}
+
+
+table {
+	margin: 0 auto;
+}
+</style>
 </head>
 
 <body>
-	
-<h1>Detail Page</h1>
-</body>
 
-[[${dto.content}]]
+	<h1>Detail Page</h1>
+
+<a href="success1">메인으로 가기</a>
+
+<div>
+
+
+<table>
+	<thead>
+		<td>번호</td>
+		<td>아이디</td>
+		<td>제목</td>
+		<td>내용</td>
+		<td>작성대상</td>
+		<td>삭제</td>
+	</thead>
+	<tbody>
+		<tr>
+	
+		<td>[[${dto.bno}]]</td>
+		<td>[[${dto.id}]]</td>
+		<td>[[${dto.title}]]</td>
+		<td>[[${dto.content}]]</td>
+		<td>[[${dto.target}]]</td>
+		<td><a th:href="@{delete(bno=${dto.bno})}">x</a></td>
+	</tr>
+	
+	
+	</tbody>
+</table>
+
 
 </body>
 

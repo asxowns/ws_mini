@@ -10,8 +10,28 @@
 <body>
 	
 <h1>Detail Send Page</h1>
-[[${dto.bno}]]
+[[${dto.content}]]
 
+
+<a href="success1">메인으로 가기</a>
+	<table border="1">
+	   <thead>
+	       <td>번호</td>
+	       <td>아이디</td>
+	       <td>제목</td>
+	       <td>내용</td>
+	       <td>작성대상</td>
+	   </thead>
+	   
+	          <tr th:each="dto, status : ${list}">
+				<td> [[${dto.bno}]]</td>
+				<td> [[${dto.id}]]</td>
+				<td> [[${dto.title}]]</td>
+				<td> [[${dto.content}]]</td>
+				<td> [[${dto.target}]]</td>
+			
+	          </tr>
+	  </table>
 
 </body>
 

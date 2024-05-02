@@ -1,5 +1,8 @@
 package com.example.team1.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +16,7 @@ import com.example.team1.dto.Bbs;
 import com.example.team1.dto.Member;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -36,14 +40,16 @@ public class MyController {
 	
 	// 로그인하기
 	@PostMapping("/login")
-	public String login(HttpServletRequest request, @RequestParam("id") String id, @RequestParam("pw") String pw) {
+	public String login(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") String id, @RequestParam("pw") String pw) throws IOException {
 		
+		PrintWriter out = response.getWriter();
 		Member result = dao.login(id, pw);
 		
 		if(result != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
 			session.setAttribute("pw", pw);
+			out.print(String.format("<script>alert('로그인성공')</script>"));
 			return "success";
 		}else {
 			return "loginForm";
@@ -61,7 +67,10 @@ public class MyController {
 	@PostMapping("/write")
 	public String write(Bbs bbs) {
 		
-		dao.write(bbs);
+		int result = dao.write(bbs);
+		if(result == 1) {
+			
+		}
 		
 		return "redirect:list";
 	}

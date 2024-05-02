@@ -117,7 +117,7 @@
 	          <tr th:each="dto, status : ${list}">
 				<td> [[${dto.bno}]]</td>
 				<td> [[${dto.id}]]</td>
-				<td> <a th:href="@{detailReceive(bno=${dto.id})}"> [[${dto.title}]]</a></td>
+				<td> <a th:href="@{detailReceive(bno=${dto.bno})}"> [[${dto.title}]]</a></td>
 		
 				<td> [[${dto.target}]]</td>
 			

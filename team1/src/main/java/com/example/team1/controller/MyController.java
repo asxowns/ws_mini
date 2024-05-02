@@ -119,9 +119,25 @@ public class MyController {
 
 	}
 
+	// 접근 실패후 전페 리스트
+	@GetMapping("/list1")
+	public String list(Model model, @RequestParam("msg") String msg) throws Exception {
+		response.setContentType("text/html; charset=utf-8");
+		request.setCharacterEncoding("UTF-8");
+
+		model.addAttribute("list", dao.list());
+		if (msg != null) {
+			PrintWriter out = response.getWriter();
+			out.print(String.format("<script>alert('접근권한이 없습니다.');</script>"));
+		}
+		return "list";
+	}
+
 	// 전체 리스트
 	@GetMapping("/list")
-	public String list(Model model) {
+	public String list(Model model) throws Exception {
+		response.setContentType("text/html; charset=utf-8");
+		request.setCharacterEncoding("UTF-8");
 
 		model.addAttribute("list", dao.list());
 
@@ -148,13 +164,22 @@ public class MyController {
 
 	// 디테일 페이지
 	@GetMapping("/detail")
-	public String detail(@RequestParam("bno") int bno, Model model) {
-
+	public String detail(@RequestParam("bno") int bno, Model model) throws Exception {
+		HttpSession session = request.getSession();
+		System.out.println("dddd");
 		Bbs bbs = dao.detail(bno);
 
 		model.addAttribute("dto", bbs);
 
-		return "detail";
+		if (session.getAttribute("id").equals(bbs.getId()) || session.getAttribute("id").equals(bbs.getTarget())) {
+			return "detail";
+		} else {
+			PrintWriter out = response.getWriter();
+			String msg = "sss";
+
+			return "redirect:list1?msg=" + msg;
+		}
+
 	}
 
 	// 디테일 send

@@ -61,6 +61,11 @@ public class MyController {
 		}
 	}
 	
+	@GetMapping("/myPage")
+	public String myPage() {
+		return "myPage";
+	}
+	
 	// 글작성 폼
 	@GetMapping("/writeForm")
 	public String writeForm() {

@@ -2,6 +2,7 @@ package com.example.team1.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,6 +43,9 @@ public class MyController {
 	@PostMapping("/login")
 	public String login(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") String id, @RequestParam("pw") String pw) throws IOException {
 		
+		response.setContentType("text/html; charset=utf-8");
+		request.setCharacterEncoding("UTF-8");
+		
 		PrintWriter out = response.getWriter();
 		Member result = dao.login(id, pw);
 		
@@ -49,9 +53,10 @@ public class MyController {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
 			session.setAttribute("pw", pw);
-			out.print(String.format("<script>alert('로그인성공')</script>"));
+			out.print(String.format("<script>alert('로그인성공');</script>"));
 			return "success";
 		}else {
+			out.print(String.format("<script>alert('로그인실패 다시입력해주세요.');</script>"));
 			return "loginForm";
 		}
 	}
@@ -65,21 +70,38 @@ public class MyController {
 	
 	// 글작성하기
 	@PostMapping("/write")
-	public String write(Bbs bbs) {
+	public String write(Bbs bbs, HttpServletResponse response, HttpServletRequest request) throws Exception{
 		
-		int result = dao.write(bbs);
-		if(result == 1) {
-			
+		response.setContentType("text/html; charset=utf-8");
+		request.setCharacterEncoding("UTF-8");
+		
+		PrintWriter out = response.getWriter();
+		dao.write(bbs);
+		
+		if(bbs.getId().equals("")) {
+			out.print(String.format("<script>alert('아이디를 입력해주세요.');</script>"));
+			return "writeForm";
+		}else if(bbs.getTitle().equals("")) {
+			out.print(String.format("<script>alert('제목을 입력해주세요.');</script>"));
+			return "writeForm";
+		}else if(bbs.getContent().equals("")) {
+			out.print(String.format("<script>alert('내용을 입력해주세요.');</script>"));
+			return "writeForm";
+		}else if(bbs.getTarget().equals("")) {
+			out.print(String.format("<script>alert('받는 사람을 입력해주세요.');</script>"));
+			return "writeForm";
+		}else {
+			return "redirect:list";
 		}
+			
 		
-		return "redirect:list";
 	}
 	
 	//전체 리스트
 	@GetMapping("/list")
 	public String list(Model model) {
 		
-		model.addAttribute("dto", dao.list());
+		model.addAttribute("list", dao.list());
 		
 		return "list";
 	}
@@ -88,7 +110,7 @@ public class MyController {
 	@GetMapping("/sendList")
 	public String sendList(@RequestParam("id") String id, Model model) {
 		
-		model.addAttribute("dto", dao.sendList(id));
+		model.addAttribute("list", dao.sendList(id));
 		
 		return "listSend";
 	}
@@ -97,7 +119,7 @@ public class MyController {
 	@GetMapping("/receiveList")
 	public String receiveList(@RequestParam("id") String id, Model model) {
 		
-		model.addAttribute("dto", dao.receiveList(id));
+		model.addAttribute("list", dao.receiveList(id));
 		
 		return "listReceive";
 	}

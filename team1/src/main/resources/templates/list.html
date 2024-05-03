@@ -2,98 +2,120 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Insert title here</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
 
-	<style>
-		ul {
+<style>
+body {
+	padding: 0;
+	margin: 0;
+}
 
-			text-align: right;
-		}
+ul {
+	text-align: right;
+	margin: 0;
+	padding: 0;
+}
 
-		li {
-			text-align: right;
-			display: inline-block;
-			list-style: none;
-		}
+li {
+	text-align: right;
+	display: inline-block;
+	list-style: none;
+}
 
-		div {
-			width: 1500px;
-			height: 30px;
-			margin-bottom: 20px;
+div {
+	width: 1500px;
+	height: 30px;
+	margin-bottom: 20px;
+}
 
-		}
+#showTable {
+	text-align: center;
+}
 
-		#showTable {
-			text-align: center;
+table {
+	margin: 0 auto;
+	border-collapse: collapse;
+	width: 100%;
+}
 
-		}
+th, td {
+	border: 1px solid #ddd;
+	/* 연한 회색 선을 적용합니다. */
+	padding: 8px;
+	/* 셀 안의 여백을 지정합니다. */
+	text-align: center;
+}
 
-		table {
-			margin: 0 auto;
-			border-collapse: collapse;
-			width: 100%;
-		}
+@keyframes fadeIn { 
+0% {
+	opacity: 0;
+	transform: translateY(-20px);
+}
+100%{
+opacity:
 
-		th,
-		td {
-			border: 1px solid #ddd;
-			/* 연한 회색 선을 적용합니다. */
-			padding: 8px;
-			/* 셀 안의 여백을 지정합니다. */
-			text-align: center;
 
-		}
+1
+;
 
-		@keyframes fadeIn {
-			0% {
-				opacity: 0;
-				transform: translateY(-20px);
 
-			}
+transform
 
-			100% {
-				opacity: 1;
-				transform: translateY(0);
 
-			}
+:
 
-		}
 
-		#ani {
-			background-image: url('../../webapp/img/board.PNG');
-			margin-bottom: 100px;
-			text-align: center;
-			font-size: 40px;
-			animation: fadeIn 0.5s ease-in-out;
-		}
-	</style>
+translateY
+(
+
+
+0
+
+
+)
+;
+
+
+}
+}
+#ani {
+	background-image: url('../../webapp/img/board.PNG');
+	margin-bottom: 100px;
+	text-align: center;
+	font-size: 40px;
+	animation: fadeIn 0.5s ease-in-out;
+}
+
+#ani2 {
+	animation: fadeIn 0.5s ease-in-out;
+}
+
+#header {
+	background-color: #caf0f8;
+	margin: 0;
+	padding: 0;
+	height:50px;
+	border-bottom:1px solid #ccc;
+	margin-bottom:45px;
+}
+</style>
 </head>
 
 <body>
-	<div>
+	<div id="header">
 		<ul>
-			<li>
-				<a href="success1">메인으로 가기</a>
-			</li>
-			<li>
-				<a href="myPage">🙎‍♂️ [[${session.id}]]님의 마이페이지</a>
-			</li>
-			<li>
-				<a href="logout">로그아웃 </a>
-			</li>
+			<li><a href="success"> 📕메인으로 가기</a></li>
+			<li><a href="myPage">🙎‍♂️ [[${session.id}]]님의 마이페이지</a></li>
+			<li><a href="logout">로그아웃 </a></li>
 
 		</ul>
-		<hr>
-
 	</div>
 
-	<div id="ani">
-		📃게시판 글 목록
-	</div>
+	<div id="ani">📃게시판 글 목록</div>
 
-	<div>
+	<div id="ani2">
 		<a href="writeForm">🖊글 작성하기</a><br>
 		<table style="margin: 0 auto;">
 			<thead>
@@ -105,14 +127,15 @@
 			</thead>
 
 			<tr th:each="dto, status : ${list}">
-				<td> [[${dto.bno}]]</td>
-				<td> [[${dto.id}]]</td>
-				<td> <a th:href="@{detail(bno=${dto.bno})}"> [[${dto.title}]]</a></td>
-				<td> [[${dto.target}]]</td>
+				<td>[[${dto.bno}]]</td>
+				<td>[[${dto.id}]]</td>
+				<td><a th:href="@{detail(bno=${dto.bno})}">
+						[[${dto.title}]]</a></td>
+				<td>[[${dto.target}]]</td>
 
 			</tr>
 		</table>
-		
+
 	</div>
 
 

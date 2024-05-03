@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.team1.dao.IBbsDao;
 import com.example.team1.dto.Bbs;
@@ -102,8 +103,19 @@ public class MyController {
 		request.setCharacterEncoding("UTF-8");
 
 		PrintWriter out = response.getWriter();
-		dao.write(bbs);
-
+		
+		List<Member> list =dao.memberList();
+		boolean sw = false;
+		for(Member m : list) {
+			if(m.getId().equals(bbs.getTarget())) {
+				sw= true;
+			}
+		}
+		if(!sw) {
+			out.print(String.format("<script>alert('대상자가 가입되지 않았습니다.');</script>"));
+			return "writeForm";
+		}
+		
 		if (bbs.getId().equals("")) {
 			out.print(String.format("<script>alert('아이디를 입력해주세요.');</script>"));
 			return "writeForm";
@@ -117,8 +129,10 @@ public class MyController {
 			out.print(String.format("<script>alert('받는 사람을 입력해주세요.');</script>"));
 			return "writeForm";
 		} else {
+			dao.write(bbs);
 			return "redirect:list";
 		}
+		
 
 	}
 
@@ -264,4 +278,28 @@ public class MyController {
 		return "success";
 
 	}
+	
+	
+	@RequestMapping("/idCheck")
+	public @ResponseBody String idcheck(@RequestParam("idd") String idd) throws Exception {
+		
+		PrintWriter out = response.getWriter();
+		String msg="";
+		List<Member> list = dao.memberList();
+		for (Member m : list) {
+			if (m.getId().equals(idd)) {
+				msg = "중복된 아이디 입니다 다시 입력해주세요.";
+				return msg;
+			}
+		}
+		msg="사용 가능한 아이디 입니다.";
+		return msg;
+	}
+	
+	
+	
+	
+	
+	
+	
 }

@@ -3,30 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+		@keyframes fadeIn {
+			0% {
+				opacity: 0;
+				transform: translateY(-20px);
+
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+
+			}
+
+		}
+
+		.ani {
+
+			animation: fadeIn 0.5s ease-in-out;
+		}
+
+		.container {
+
+			background: #f5f5f5;
+			width: 860px;
+			height: 540px;
+			display: flex;
+			flex-direction: row;
+			box-shadow: 10px black;
+			border-radius: 10px;
+
+		}
+
+		.left-side {
+			background-image:
+				radial-gradient(ellipse farthest-corner at 0 140%, #5d9dff 0%, #2178ff 70%, #3585ff 70%);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: white;
+
+		}
+
+		.left-side h1 {
+			color: white;
+			width: 100%;
+			text-align: center;
+			opacity: 0.9;
+
+		}
+
+
+		.right-side {
+			width: 50%;
+			border-radius: 0px 10px 10px 0px;
+
+			flex-direction: column;
+			align-items: center;
+			padding: 40px;
+			background: rgb(255, 255, 255);
+			background: linear-gradient(287deg, rgba(255, 255, 255, 1) 0%, rgba(243, 244, 244, 1) 0%, rgba(255, 255, 255, 1) 100%);
+		}
+
+		.login-btn {
+			width: 95px;
+			height: 35px;
+			color: white;
+			border: 0;
+			border-radius: 4px;
+
+			background: rgb(105, 163, 255);
+			background: linear-gradient(162deg, rgba(105, 163, 255, 1) 0%, rgba(43, 125, 254, 1) 50%, rgba(43, 125, 254, 1) 100%);
+			margin-top: 15px;
+		}
+
+		input[type="passward"] {
+
+			margin-bottom: 20px;
+		}
+
+		div {
+			width: 1500px;
+			height: 30px;
+			margin-bottom: 20px;
+			text-align: center;
+
+		}
+
+		ul {
+
+			text-align: right;
+		}
+
+		li {
+			text-align: right;
+			display: inline-block;
+			list-style: none;
+		}
+	</style>
 </head>
 <body>
-	<h1>regForm Page</h1>
-	<hr>
 
-	<form action="regist" method="post">
-		<table>
-			<tr>
-				<th>아이디 :</th>
-				<td><input type="text" name="id"></td>
-			</tr>
-			<tr>
-				<th>비밀번호 :</th>
-				<td><input type="text" name="pw"></td>
-			</tr>
-			<tr>
-				<th>이름 :</th>
-				<td><input type="text" name="name"></td>
-			</tr>
-			<tr>
-				<th colspan="2"><input type="submit" value="등록하기"></th>
-				
-			</tr>
-		</table>
+	<hr>
+<div>
+	<form action="regist" method="post" class="ani">
+	<h1>sign-in<h1>
+		<i class="far fa-envelope"></i>
+		<input placeholder="id" type="text" name="id">
+		
+		<br>
+		<i class="fas fa-key"></i>
+		<input placeholder="Password" type="password" name="pw">
+		<br>
+		
+		
+		🙍‍♂️<input placeholder="name" type="text" name="name"><br>
+		<input type="submit" value="회원가입">
+
+	</form>
+
+</div>
+		
+		
 	</form>
 </body>
 </html>

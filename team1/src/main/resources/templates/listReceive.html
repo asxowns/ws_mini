@@ -8,74 +8,75 @@
 
 	<style>
 		ul {
-		
-				text-align: right;
+
+			text-align: right;
+		}
+
+		li {
+			text-align: right;
+			display: inline-block;
+			list-style: none;
+		}
+
+		div {
+			width: 1500px;
+			height: 30px;
+			margin-bottom: 20px;
+
+		}
+
+		#showTable {
+			text-align: center;
+
+		}
+
+		table {
+			margin: 0 auto;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		th,
+		td {
+			border: 1px solid #ddd;
+			/* 연한 회색 선을 적용합니다. */
+			padding: 8px;
+			/* 셀 안의 여백을 지정합니다. */
+			text-align: center;
+
+		}
+
+		@keyframes fadeIn {
+			0% {
+				opacity: 0;
+				transform: translateY(-20px);
+
 			}
-		
-			li {
-				text-align: right;
-				display: inline-block;
-				list-style: none;
+
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+
 			}
-		
-			div {
-				width: 1500px;
-				height: 30px;
-				margin-bottom: 20px;
-		
-			}
-		
-			#showTable {
-				text-align: center;
-		
-			}
-		
-			table {
-				margin: 0 auto;
-				border-collapse: collapse;
-				width: 100%;
-			}
-		
-			th,
-			td {
-				border: 1px solid #ddd;
-				/* 연한 회색 선을 적용합니다. */
-				padding: 8px;
-				/* 셀 안의 여백을 지정합니다. */
-				text-align: center;
-		
-			}
-		
-			@keyframes fadeIn {
-				0% {
-					opacity: 0;
-					transform: translateY(-20px);
-		
-				}
-		
-				100% {
-					opacity: 1;
-					transform: translateY(0);
-		
-				}
-		
-			}
-		
-			#ani {
-				background-image: url('../../webapp/img/board.PNG');
-				margin-bottom: 100px;
-				text-align: center;
-				font-size: 40px;
-				animation: fadeIn 0.5s ease-in-out;
-			}
+
+		}
+
+		#ani {
+			background-image: url('../../webapp/img/board.PNG');
+			margin-bottom: 100px;
+			text-align: center;
+			font-size: 40px;
+			animation: fadeIn 0.5s ease-in-out;
+		}
 	</style>
 </head>
 
 <body>
+	
 	<div>
 		<ul>
 			<li>
-				<a href="success1">메인으로 가기</a>
+				<a href="success"> 📕메인으로 가기</a>
 			</li>
 			<li>
 				<a href="myPage">🙎‍♂️ [[${session.id}]]님의 마이페이지</a>
@@ -83,10 +84,10 @@
 			<li>
 				<a href="logout">로그아웃 </a>
 			</li>
-	
+
 		</ul>
 		<hr>
-	
+
 	</div>
 	<div id="ani">
 		📃나에게 쓴글

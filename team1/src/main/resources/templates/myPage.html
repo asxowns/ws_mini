@@ -9,91 +9,83 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 
-<style>
-@
-keyframes fadeIn { 0% {
-	opacity: 0;
-	transform: translateY(-20px);
-}
+	<style>
+		@keyframes fadeIn {
+			0% {
+				opacity: 0;
+				transform: translateY(-20px);
 
-100
+			}
 
+			100% {
+				opacity: 1;
+				transform: translateY(0);
 
-%
-{
-opacity
+			}
 
+		}
 
-:
+		.ani {
+			width: 600px;
+			height: 100px;
+			animation: fadeIn 0.5s ease-in-out;
+		}
 
+		div {
+			width: 1500px;
+			height: 30px;
+			margin-bottom: 20px;
 
-1
-;
+		}
 
-
-transform
-
-
-:
-
-
-translateY
-(
-
-
-0
-
-
-)
-;
+		.container {
+			margin-top: 100px;
+			display: flex;
+			justify-content: space-evenly
+		}
 
 
-}
-}
-.ani {
-	width: 600px;
-	height: 100px;
-	animation: fadeIn 0.5s ease-in-out;
-}
+		ul {
 
-div {
-	width: 1500px;
-	height: 30px;
-	margin-bottom: 20px;
-}
+			text-align: right;
+		}
 
-.container {
-	margin-top: 100px;
-	display: flex;
-	justify-content: space-evenly
-}
+		li {
+			text-align: right;
+			display: inline-block;
+			list-style: none;
+		}
 
-ul {
-	text-align: right;
-}
+		#onbox {
+			font-size: 30px;
 
-li {
-	text-align: right;
-	display: inline-block;
-	list-style: none;
-}
+			transition: transform 0.2s ease;
+		}
 
-#onbox {
-	font-size: 30px;
-	transition: transform 0.2s ease;
-}
 
-a:hover {
-	transform: scale(1.1);
-}
+
+
+		a:hover {
+			transform: scale(1.1);
+
+			
+
+		}
 </style>
 </head>
 
 <body>
 	<div>
 		<ul>
-			<li><a href="myPage"> 🙎‍♂️ [[${session.id}]]님의 마이페이지</a></li>
-			<li><a href="logout">로그아웃 </a></li>
+			<li>
+				<a href="success"> 📕메인으로 가기</a>
+			</li>
+			<li>
+				<a href="myPage">🙎‍♂️ [[${session.id}]]님의 마이페이지</a>
+			</li>
+			<li>
+				<a href="logout">로그아웃 </a>
+			</li>
 
 		</ul>
 		<hr>

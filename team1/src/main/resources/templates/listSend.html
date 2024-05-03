@@ -16,8 +16,6 @@
 			display: inline-block;
 			list-style: none;
 		}
-		
-		#right
 
 		div {
 			width: 1500px;
@@ -69,33 +67,37 @@
 			font-size: 40px;
 			animation: fadeIn 0.5s ease-in-out;
 		}
+			
+		#ani2 {
+		
+			animation: fadeIn 0.5s ease-in-out;
+		}
 	</style>
 </head>
 
 <body>
 	
-	<div>
-		<table>
-			<div>
-				<ul>
-				<li id="right"><h1>마이페이지</h1></li>
-					<li>
-						<a href="success1">메인으로 가기</a>
-					</li>
-					<li>
-						<a href="myPage">🙎‍♂️ [[${session.id}]]님의 마이페이지</a>
-					</li>
-					<li>
-						<a href="logout">로그아웃 </a>
-					</li>
+<div>
+		<ul>
+			<li>
+				<a href="success"> 📕메인으로 가기</a>
+			</li>
+			<li>
+				<a href="myPage">🙎‍♂️ [[${session.id}]]님의 마이페이지</a>
+			</li>
+			<li>
+				<a href="logout">로그아웃 </a>
+			</li>
 
-				</ul>
-				<hr>
+		</ul>
+		<hr>
 
-			</div>
+	</div>
 			<div id="ani">
 				📃내가 쓴글
 			</div>
+			<div id="ani2">
+		<table>
 			<thead>
 				<td>번호</td>
 				<td>아이디</td>
@@ -112,6 +114,7 @@
 			</tr>
 		</table>
 		<a href="writeForm" class="write">글작성하기</a><br>
+		</div>
 	</div>
 </body>
 

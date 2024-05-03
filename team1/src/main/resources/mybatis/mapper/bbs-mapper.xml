@@ -39,5 +39,8 @@
 		#{bno}
 	</select>
 
+	<select id="memberList" resultType="com.example.team1.dto.Member">
+		select * from member
+	</select>
 
 </mapper>

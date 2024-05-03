@@ -2,6 +2,7 @@ package com.example.team1.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,11 +55,7 @@ public class MyController {
 		PrintWriter out = response.getWriter();
 		Member result = null;
 
-		if (!id.equals("") && !pw.equals("")) {
-			result = dao.login(id, pw);
-		} else {
-			out.print(String.format("<script>alert('아이디 및 비밀번호가 틀렸습니다 다시 입력해주세요.');</script>"));
-		}
+		result = dao.login(id, pw);
 
 		if (result != null) {
 			HttpSession session = request.getSession();
@@ -219,15 +216,52 @@ public class MyController {
 		return "redirect:list";
 	}
 
-	@GetMapping("/success1")
+	@GetMapping("/success")
 	public String seccess() {
 
 		return "success";
 	}
 
-	@GetMapping("/registForm")
+	// 회원가입 폼
+	@GetMapping("/regForm")
 	public String registForm() {
-
+		return "regForm";
 	}
 
+	// 회원가입
+	@PostMapping("/regist")
+	public String regist(Member member) throws Exception {
+
+		response.setContentType("text/html; charset=utf-8");
+		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
+		PrintWriter out = response.getWriter();
+		List<Member> list = dao.memberList();
+
+		if (member.getId().equals("")) {
+			out.print(String.format("<script>alert('아이디가 없습니다 다시 입력해주세요.');</script>"));
+			return "regForm";
+		} else if (member.getPw().equals("")) {
+			out.print(String.format("<script>alert('비밀번호가 없습니다 다시 입력해주세요.');</script>"));
+			return "regForm";
+		} else if (member.getName().equals("")) {
+			out.print(String.format("<script>alert('이름이 없습니다 다시 입력해주세요.');</script>"));
+			return "regForm";
+		}
+
+		for (Member m : list) {
+			if (m.getId().equals(member.getId())) {
+				out.print(String.format("<script>alert('중복된 아이디 입니다 다시 입력해주세요.');</script>"));
+				return "regForm";
+			}
+		}
+
+		session.setAttribute("id", member.getId());
+		session.setAttribute("pw", member.getPw());
+		session.setAttribute("name", member.getName());
+
+		dao.regist(member);
+		return "success";
+
+	}
 }

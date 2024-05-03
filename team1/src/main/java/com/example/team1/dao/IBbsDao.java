@@ -19,4 +19,5 @@ public interface IBbsDao {
 	public List<Bbs> receiveList(@Param("id") String id);
 	public Bbs detail(@Param("bno") int bno);
 	public int delete(@Param("bno") int bno);
+	public List<Member> memberList();
 }

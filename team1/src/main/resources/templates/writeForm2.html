@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Insert title here</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f4f4f4;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			max-width: 600px;
+			margin: 50px auto;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		}
+
+		h1 {
+			text-align: center;
+			color: #333;
+		}
+
+		form {
+			text-align: center;
+		}
+
+		input[type="text"],
+		input[type="password"] {
+			width: 200px;
+			padding: 10px;
+			margin: 10px 0;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+
+		input[type="submit"] {
+			display: inline-block;
+			padding: 10px 20px;
+			background-color: #007bff;
+			color: #fff;
+			text-decoration: none;
+			border-radius: 5px;
+			border: none;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #0056b3;
+		}
+
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		div {
+			font-weight: bold;
+			font-size: 20px;
+			text-align: center;
+			margin-bottom: 30px;
+			width: 100%;
+		}
+
+		main {
+			text-align: center;
+		}
+
+		table,
+		tr,
+		th,
+		td {
+			border-collapse: collapse;
+			border: solid 1px #000;
+			padding: 10px;
+		}
+
+
+		table {
+			margin: 0 auto;
+		}
+
+		upperDiv {
+			width: 1500px;
+			height: 50px;
+			font-weight: bold;
+			font-size: 20px;
+			text-align: center;
+			margin-bottom: 30px;
+		}
+
+		ul {
+
+			text-align: right;
+		}
+
+		li {
+			text-align: right;
+			display: inline-block;
+			list-style: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="upperDiv">
+		<ul>
+			<li>
+				<a href="myPage">[[${session.id}]]님의 마이페이지</a>
+			</li>
+			<li>
+				<a href="logout">로그아웃 </a>
+			</li>
+		</ul>
+	</div>
+	<hr>
+	<h1>writeFromPage</h1>
+	<h1></h1>
+</body>
+<form action="write" method="post">
+
+	제목 <input type="text" id="title" name="title" placeholder="제목을 입력해주세요"><br>
+	내용 <input type="text" id="content" name="content"><br>
+	대상 <input type="text" id="target" name="target"><br>
+	<input type="submit" value="글작성">
+</form>
+</body>
+
+</html>

@@ -2,7 +2,6 @@ package com.example.team1.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,7 +52,13 @@ public class MyController {
 		request.setCharacterEncoding("UTF-8");
 
 		PrintWriter out = response.getWriter();
-		Member result = dao.login(id, pw);
+		Member result = null;
+
+		if (!id.equals("") && !pw.equals("")) {
+			result = dao.login(id, pw);
+		} else {
+			out.print(String.format("<script>alert('아이디 및 비밀번호가 틀렸습니다 다시 입력해주세요.');</script>"));
+		}
 
 		if (result != null) {
 			HttpSession session = request.getSession();
@@ -66,6 +71,7 @@ public class MyController {
 			out.print(String.format("<script>alert('로그인실패 다시입력해주세요.');</script>"));
 			return "loginForm";
 		}
+
 	}
 
 	@GetMapping("/logout")
@@ -212,18 +218,16 @@ public class MyController {
 
 		return "redirect:list";
 	}
-	
+
 	@GetMapping("/success1")
 	public String seccess() {
-		
+
 		return "success";
 	}
-	
-	
-	
-	
-	
-	
-	
+
+	@GetMapping("/registForm")
+	public String registForm() {
+
+	}
 
 }

@@ -2,36 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.team1.dao.IBbsDao">
 
-<select id="login" resultType="com.example.team1.dto.Member">
-	select * from member where id =#{id}  and pw =#{pw}  group BY id
-</select>
+	<select id="login" resultType="com.example.team1.dto.Member">
+		select * from member where id
+		=#{id} and pw =#{pw} group BY id
+	</select>
 
-<insert id="write">
-	insert into bbs values(null,#{bbs.id},#{bbs.title},#{bbs.content},#{bbs.target})
-</insert>
+	<insert id="write">
+		insert into bbs
+		values(null,#{bbs.id},#{bbs.title},#{bbs.content},#{bbs.target})
+	</insert>
 
-<insert id="regist">
-	insert into member values(#{member.id},#{member.pw},#{member.name})
-</insert>
+	<insert id="regist">
+		insert into member
+		values(#{member.id},#{member.pw},#{member.name})
+	</insert>
 
-<select id="list" resultType="com.example.team1.dto.Bbs">
-    SELECT * FROM bbs
-</select>
+	<select id="list" resultType="com.example.team1.dto.Bbs">
+		SELECT * FROM bbs
+	</select>
 
-<select id="sendList" resultType="com.example.team1.dto.Bbs">
-    SELECT * FROM bbs WHERE id=#{id}
-</select>
+	<select id="sendList" resultType="com.example.team1.dto.Bbs">
+		SELECT * FROM bbs WHERE
+		id=#{id}
+	</select>
 
-<select id="receiveList" resultType="com.example.team1.dto.Bbs">
-     SELECT * FROM bbs WHERE target=#{id}
-</select>
+	<select id="receiveList" resultType="com.example.team1.dto.Bbs">
+		SELECT * FROM bbs WHERE
+		target=#{id}
+	</select>
 
-<delete id="delete">
-    DELETE FROM bbs WHERE bno = #{bno}
-</delete>
-<select id="detail" resultType="com.example.team1.dto.Bbs">
-	select * from bbs where bno = #{bno}
-</select>
+	<delete id="delete">
+		DELETE FROM bbs WHERE bno = #{bno}
+	</delete>
+	<select id="detail" resultType="com.example.team1.dto.Bbs">
+		select * from bbs where bno =
+		#{bno}
+	</select>
 
 
 </mapper>

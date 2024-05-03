@@ -5,126 +5,113 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Insert title here</title>
-	
-		   <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+
+	<style>
+		ul {
 		
-		table, tr, th, td{
-		border-collapse: collapse;
+				text-align: right;
+			}
 		
-		border:solid 1px #000 ;
-		padding:10px;
+			li {
+				text-align: right;
+				display: inline-block;
+				list-style: none;
+			}
 		
-		}
-
-		div{
-			width: 100%;
-		}
-
-
-		table{
-		margin: 0 auto;
-		}
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        form {
-            text-align: center;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 200px;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-
-        input[type="submit"] {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        a.write {
-            display: inline-block;
-           
-            color: #fff;
-            text-decoration: none;
-            margin-top: 10px;
-            background-color: #007bff;
-            padding:10px 20px;
-            border-radius: 5px;
-        }
-
-        a.write:hover {
-            text-decoration: underline;
-        }
-        
-        div{
-      
-      
-        text-align:center;
-  
-        }
-        
-        main{
-        text-align: center;
-        }
-    </style>
+			div {
+				width: 1500px;
+				height: 30px;
+				margin-bottom: 20px;
+		
+			}
+		
+			#showTable {
+				text-align: center;
+		
+			}
+		
+			table {
+				margin: 0 auto;
+				border-collapse: collapse;
+				width: 100%;
+			}
+		
+			th,
+			td {
+				border: 1px solid #ddd;
+				/* 연한 회색 선을 적용합니다. */
+				padding: 8px;
+				/* 셀 안의 여백을 지정합니다. */
+				text-align: center;
+		
+			}
+		
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+					transform: translateY(-20px);
+		
+				}
+		
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+		
+				}
+		
+			}
+		
+			#ani {
+				background-image: url('../../webapp/img/board.PNG');
+				margin-bottom: 100px;
+				text-align: center;
+				font-size: 40px;
+				animation: fadeIn 0.5s ease-in-out;
+			}
+	</style>
 </head>
 
 <body>
-	<h1>list Recieve Page</h1>
-<div>
-<table>
-	   <thead>
-	       <td>번호</td>
-	       <td>아이디</td>
-	       <td>제목</td>
+	<div>
+		<ul>
+			<li>
+				<a href="success1">메인으로 가기</a>
+			</li>
+			<li>
+				<a href="myPage">🙎‍♂️ [[${session.id}]]님의 마이페이지</a>
+			</li>
+			<li>
+				<a href="logout">로그아웃 </a>
+			</li>
 	
-	       <td>작성대상</td>
-	   </thead>
-	   
-	          <tr th:each="dto, status : ${list}">
+		</ul>
+		<hr>
+	
+	</div>
+	<div id="ani">
+		📃나에게 쓴글
+	</div>
+	<div>
+		<table>
+			<thead>
+				<td>번호</td>
+				<td>아이디</td>
+				<td>제목</td>
+
+				<td>작성대상</td>
+			</thead>
+
+			<tr th:each="dto, status : ${list}">
 				<td> [[${dto.bno}]]</td>
 				<td> [[${dto.id}]]</td>
 				<td> <a th:href="@{detailReceive(bno=${dto.bno})}"> [[${dto.title}]]</a></td>
-		
+
 				<td> [[${dto.target}]]</td>
-			
-	          </tr>
-	  </table>
-	  <a href="writeForm" class="write">글작성하기</a><br>
-	  </div>
+
+			</tr>
+		</table>
+		<a href="writeForm" class="write">글작성하기</a><br>
+	</div>
 
 </body>
 

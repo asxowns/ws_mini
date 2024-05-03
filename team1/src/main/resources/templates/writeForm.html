@@ -5,19 +5,146 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Insert title here</title>
+	<style>
+		@keyframes fadeIn {
+					0% {
+						opacity: 0;
+						transform: translateY(-20px);
+		
+					}
+		
+					100% {
+						opacity: 1;
+						transform: translateY(0);
+		
+					}
+		
+				}
+		
+				.ani {
+				
+					animation: fadeIn 1s ease-in-out;
+				}
+		ul {
+
+			text-align: right;
+		}
+
+		li {
+			text-align: right;
+			display: inline-block;
+			list-style: none;
+		}
+
+		div {
+
+			width: 1500px;
+			height: 30px;
+			margin-bottom: 20px;
+
+		}
+
+		.container {
+			margin-top: 50px;
+			display: flex;
+			justify-content: center;
+
+		}
+
+		input[type=text] {
+			border: 0;
+			background-color: aliceblue;
+			width: 500px;
+			height:50px;
+			font-size: 20px;
+		}
+
+	
+		
+		button {
+			border-radius: 20px;
+			border: none;
+			outline: none;
+			font-size: 12px;
+			font-weight: bold;
+			padding: 15px 45px;
+			margin: 14px;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			cursor: pointer;
+			transition: transform 80ms ease-in;
+		}
+
+		#content {
+
+			height: 100px;
+
+		}
+
+		textarea {
+			
+			font-size: 20px;
+			margin-top:10px;
+			margin-bottom:auto;
+			width: 500px;
+			height: 100px;
+			border: none;
+			outline: none;
+			resize: none;
+			/* 사용자가 크기를 조정하지 못하도록 합니다. */
+			overflow: auto;
+			/* 텍스트가 넘치는 경우에만 스크롤바가 표시됩니다. */
+			background-color: aliceblue;
+		}
+		
+		form{
+			
+		}
+		
+		#div1{
+			text-align: center;
+			font-size: 30px;
+			margin-top: 30px;
+		}
+		
+		
+	</style>
+
+
 </head>
 
 <body>
-	<h1>writeFromPage</h1>
-<h1></h1>
-</body>
-<form action= "write" method="post">
+	<div>
+			<ul>
+				<li>
+					<a href="success1">메인으로 가기</a>
+				</li>
+				<li>
+					<a href="myPage">🙎‍♂️ [[${session.id}]]님의 마이페이지</a>
+				</li>
+				<li>
+					<a href="logout">로그아웃 </a>
+				</li>
+	
+			</ul>
+			<hr>
+	
+		</div>
+	<div class="ani" id="div1">
+		✍게시글 작성
+	</div>
 
-제목 <input type="text" id ="title" name="title" placeholder="제목을 입력해주세요"><br>
-내용 <input type="text" id ="content" name="content"><br>
-대상 <input type="text" id ="target" name="target"><br>
-<input type="submit" value="글작성">
-</form>
+	<div class="container">
+		<form action="write" method="post" class="ani" >
+
+			<input type="text" id="title" name="title" placeholder="제목을 입력해주세요"><br>
+			<textarea  			name="content" placeholder="내용을 입력해주세요"></textarea><br>
+			<input type="text" id="target" name="target" placeholder="대상을 입력해주세요"><br>
+			
+			<button>글작성</button>
+
+		</form>
+	</div>
 </body>
 
 </html>

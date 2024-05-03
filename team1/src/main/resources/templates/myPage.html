@@ -2,96 +2,115 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Insert title here</title>
-	   <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
 
-        h1 {
-            text-align: center;
-            color: #333;
-        }
+<style>
+@
+keyframes fadeIn { 0% {
+	opacity: 0;
+	transform: translateY(-20px);
+}
 
-        form {
-            text-align: center;
-        }
+100
 
-        input[type="text"],
-        input[type="password"] {
-            width: 200px;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
 
-        input[type="submit"] {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+%
+{
+opacity
 
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
 
-        a {
-            display: inline-block;
-           
-            color: #fff;
-            text-decoration: none;
-            margin-top: 10px;
-            background-color: #007bff;
-            padding:10px 20px;
-            border-radius: 5px;
-        }
+:
 
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        div{
-      
-      
-        text-align:center;
-  
-        }
-        
-        main{
-        text-align: center;
-        }
-    </style>
+
+1
+;
+
+
+transform
+
+
+:
+
+
+translateY
+(
+
+
+0
+
+
+)
+;
+
+
+}
+}
+.ani {
+	width: 600px;
+	height: 100px;
+	animation: fadeIn 0.5s ease-in-out;
+}
+
+div {
+	width: 1500px;
+	height: 30px;
+	margin-bottom: 20px;
+}
+
+.container {
+	margin-top: 100px;
+	display: flex;
+	justify-content: space-evenly
+}
+
+ul {
+	text-align: right;
+}
+
+li {
+	text-align: right;
+	display: inline-block;
+	list-style: none;
+}
+
+#onbox {
+	font-size: 30px;
+	transition: transform 0.2s ease;
+}
+
+a:hover {
+	transform: scale(1.1);
+}
+</style>
 </head>
 
 <body>
-	<h1>myPage</h1>
-<div>
-<a th:href="@{sendList(id=${session.id})}"> 내가쓴 글</a>
+	<div>
+		<ul>
+			<li><a href="myPage"> 🙎‍♂️ [[${session.id}]]님의 마이페이지</a></li>
+			<li><a href="logout">로그아웃 </a></li>
 
-<a th:href="@{receiveList(id=${session.id})}"> 나한테 쓴 글 </a>
-</div>
+		</ul>
+		<hr>
+
+	</div>
+
+	<div class="container">
+
+
+		<a th:href="@{sendList(id=${session.id})}" id="onbox" class="ani">📝나한테
+			쓴글</a> <a th:href="@{sendList(id=${session.id})}" id="onbox" class="ani">📝내가
+			쓴글</a><br>
+
+	</div>
+
+
+	<div></div>
 </body>
 
 </html>

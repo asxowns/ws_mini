@@ -5,98 +5,101 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Insert title here</title>
-	
-	   <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
 
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+	<style>
+		@keyframes fadeIn {
+			0% {
+				opacity: 0;
+				transform: translateY(-20px);
 
-        h1 {
-            text-align: center;
-            color: #333;
-        }
+			}
 
-        form {
-            text-align: center;
-        }
+			100% {
+				opacity: 1;
+				transform: translateY(0);
 
-        input[type="text"],
-        input[type="password"] {
-            width: 200px;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
+			}
 
-        input[type="submit"] {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+		}
 
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
+		.ani {
+			width: 600px;
+			height: 100px;
+			animation: fadeIn 0.5s ease-in-out;
+		}
 
-        a {
-            display: inline-block;
-           
-            color: #fff;
-            text-decoration: none;
-            margin-top: 10px;
-            background-color: #007bff;
-            padding:10px 20px;
-            border-radius: 5px;
-        }
+		div {
+			width: 1500px;
+			height: 30px;
+			margin-bottom: 20px;
 
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        div{
-        font-weight:bold;
-        font-size:20px;
-        text-align:center;
-        margin-bottom: 30px;
-        }
-        
-        main{
-        text-align: center;
-        }
-    </style>
+		}
+
+		.container {
+			margin-top: 100px;
+			display: flex;
+			justify-content: space-evenly
+		}
+
+
+		ul {
+
+			text-align: right;
+		}
+
+		li {
+			text-align: right;
+			display: inline-block;
+			list-style: none;
+		}
+
+		#onbox {
+			font-size: 30px;
+
+			transition: transform 0.2s ease;
+		}
+
+
+
+
+		a:hover {
+			transform: scale(1.1);
+
+			
+
+		}
+	</style>
+
 </head>
 
 <body>
-	<h1>success Page</h1>
-	
-	<div>[[${session.id}]]님 환영합니다</div>
-	<main>
-	<a href="myPage">마이페이지</a><br>
-	<a href= "list"> 목록보기</a><br>
-	<a href = "writeForm">글쓰기</a><br>
-	<a href = "logout">로그아웃</a><br>
-	</main>
-	
+	<div>
+		<ul>
+			<li>
+				<a href="myPage"> 🙎‍♂️ [[${session.id}]]님의 마이페이지</a>
+			</li>
+			<li>
+				<a href="logout">로그아웃 </a>
+			</li>
+
+		</ul>
+		<hr>
+
+	</div>
+
+
+
+
+	<div class="container">
+
+
+		<a href="list" id="onbox" class="ani"> 👀목록보기
+
+
+			<a href="writeForm" id="onbox" class="ani">📗게시글쓰기</a><br>
+
+	</div>
+
 
 </body>
 

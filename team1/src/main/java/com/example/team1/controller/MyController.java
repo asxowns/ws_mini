@@ -283,7 +283,6 @@ public class MyController {
 	@RequestMapping("/idCheck")
 	public @ResponseBody String idcheck(@RequestParam("idd") String idd) throws Exception {
 		
-		PrintWriter out = response.getWriter();
 		String msg="";
 		List<Member> list = dao.memberList();
 		for (Member m : list) {

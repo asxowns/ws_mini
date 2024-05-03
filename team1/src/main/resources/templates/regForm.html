@@ -158,7 +158,7 @@ li {
 				sign-in
 				</h1>
 					<i class="far fa-envelope"></i> 
-					<input placeholder="id" type="text"	name="id" id="idd"> <br>
+					<input placeholder="id" type="text"	name="id" id="idd" oninput="loadDoc(event)"> <br>
 					<div id="demo"></div>
 					<button onclick="loadDoc(event)">중복체크</button>
 					 <i class="fas fa-key"></i> 
@@ -177,6 +177,7 @@ li {
 		
 	
 		function loadDoc(e) {
+			e.preventDefault();
 			let idd = document.getElementById("idd");
 			const xhttp = new XMLHttpRequest();
 			xhttp.onload = function() {
@@ -184,7 +185,6 @@ li {
 			}
 			xhttp.open("GET", "idCheck?idd=" + idd.value, true);
 			xhttp.send();
-			e.preventDefault();
 		}
 	</script>
 </body>
